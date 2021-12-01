@@ -111,9 +111,16 @@ app.get("/", (req, res) => {
   res.send("Olá!");
 });
 
-// 8°) [GET] /lista - retorna a lista de albuns
+// 8°) [GET] /lista - retorna a lista de albuns...
 app.get("/lista", (req, res) => {
   res.send(lista);
+});
+
+// 9°) [Get] /lista/{id} - retornando ao usuário um único albun de acordo com o id...
+app.get("/lista/:id", (req, res) => {
+  const idParam = req.params.id;  // Acessa o id via a requisicao...
+  const albunEncontrado = lista.find((albun) => albun.id == idParam); // Busca um item de acordo com seu id, Procurando na lista um album que contenha o id igula ao que foi recebido via parametro...
+  res.send(albunEncontrado); // envia para o Front-End o albun encontrado...
 });
 
 app.listen(port, () => {
