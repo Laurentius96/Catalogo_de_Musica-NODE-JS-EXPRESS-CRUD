@@ -4,12 +4,13 @@ app.use(express.json()); // 3°) É dito para o express trabalhar com middleware
 const port = 3000; // 4°) Definindo a porta que o Back o irá executar...
 
 // 7°) Criando a variável que armazenara as músicas, que vão ser criadas, modificadas e armazenadas...
-const lista = [
+const listaAlbuns = [
   {
     id: 1,
-    imagem:
+    capa:
       "https://ia902802.us.archive.org/6/items/cd_antennas-to-hell_slipknot/cd_antennas-to-hell_slipknot_itemimage.png",
     nome: "Antennas To Hell",
+    artista: "Slipknot",
     genero: "Nu metal, Heavy metal, Metal alternativo",
     duracao: "77:07",
     ano: 2012,
@@ -38,9 +39,10 @@ const lista = [
   },
   {
     id: 2,
-    imagem:
+    capa:
       "https://ia800100.us.archive.org/0/items/cd_audioslave_audioslave/cd_audioslave_audioslave_itemimage.png",
     nome: "Audioslave",
+    artista: "Audioslave",
     genero: "Hard rock, Rock alternativo",
     duracao: "65:26",
     ano: 2002,
@@ -64,9 +66,10 @@ const lista = [
   },
   {
     id: 3,
-    imagem:
+    capa:
       "https://img.discogs.com/PowEgWqA4k60GpsoN-wnVOlJDbw=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14781325-1581478383-6846.jpeg.jpg",
     nome: "Martin Garrix – The Martin Garrix Experience",
+    artista: "Martin Garrix",
     genero: "Electronic, Pop",
     duracao: "71:00",
     ano: 2019,
@@ -107,19 +110,19 @@ app.get("/", (req, res) => {
    * REQ - (RESQUEST/REQUISIÇÃO) --- Vem do Usuário...
    * RES - (RESPONSE/RESPOSTA) ----- Volta para o Usuário...
    */
-  res.send("Olá!");
+  res.send("Olá, tudo OK!");
 });
 
 // 8°) [GET] /lista - retorna a lista de albuns...
-app.get("/lista", (req, res) => {
-  res.send(lista);
+app.get("/albuns", (req, res) => {
+  res.send(listaAlbuns);
 });
 
-// 9°) [Get] /lista/{id} - retornando ao usuário um único albun de acordo com o id...
-app.get("/lista/:id", (req, res) => {
+// 9°) [Get] /lista/{id} - retornando ao usuário um único album de acordo com o id...
+app.get("/albuns/:id", (req, res) => {
   const idParam = req.params.id; // Acessa o id via a requisicao...
-  const albumEncontrado = lista.find((album) => album.id == idParam); // Busca um item de acordo com seu id, Procurando na lista um album que contenha o id igula ao que foi recebido via parametro...
-  res.send(albumEncontrado); // envia para o Front-End o albun encontrado...
+  const albumEncontrado = listaAlbuns.find((album) => album.id == idParam); // Busca um item de acordo com seu id, Procurando na lista um album que contenha o id igula ao que foi recebido via parametro...
+  res.send(albumEncontrado); // envia para o Front-End o album encontrado...
 });
 
 // 10°) CORS - Permite a troca de recursos entre origens diferentes...
