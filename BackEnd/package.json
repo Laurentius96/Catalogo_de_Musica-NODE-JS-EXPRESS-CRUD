@@ -1,14 +1,15 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Desafio do Módulo 03 da BlueEdTech: a proposta do desafio é o desenvolvimento de uma aplicação web para cadastro de músicas, onde seja possível incluir, excluir e editar uma nova música com os campos: nome da música, estilo, imagem, uma nota de 0 a 5 e outro campo caso o aluno queira adicionar.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Lorenzo Costa Bianchi",
+  "author": "",
   "license": "ISC",
+  "keywords": [],
+  "description": "",
   "devDependencies": {
     "nodemon": "^2.0.15"
   },

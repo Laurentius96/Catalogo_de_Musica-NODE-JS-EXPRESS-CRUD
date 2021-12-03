@@ -1,16 +1,28 @@
+<!-- 11°) -->
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Álbuns de Música</title>
+    <title>Albuns de Música</title>
   </head>
   <body>
     <header>
       <h1>Bem-Vindo(a) ao catálogo de Álbuns de Músicas do Lorenzo!</h1>
     </header>
     <main>
+      <!-- -------------------------- 15°) ------------------------- -->
+      <div>
+        <p>Digite o número do album.</p>
+        <input type="number" id="idAlbum" placeholder="Digito o número:" />
+        <button onclick="escolherAlbum()">Escolher</button>
+      </div>
+      <div>
+        <h2>Meu album escolhido:</h2>
+        <table id="album"></table>
+      </div>
+      <!-- ---------------------------------------------------------- -->
       <div>
         <h2>Lista de Álbuns</h2>
         <table id="lista"></table>

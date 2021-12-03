@@ -1,14 +1,12 @@
 const express = require("express"); // 1°) Importa o express para que seja possivel utilizar as suas funções na aplicação...
-const app = express(); // 2°) Inicializa o express no nosso arquivo JavaSript para que ele possa assumir as funções do express...
-app.use(express.json()); // 3°) É dito para o express trabalhar com middleware de Jason para trabalharmos com o formato JSON...
-const port = 3000; // 4°) Definindo a porta que o Back o irá executar...
 
-// 7°) Criando a variável que armazenara as músicas, que vão ser criadas, modificadas e armazenadas...
-const listaAlbuns = [
+const app = express(); // 2°) Inicializa o express no nosso arquivo JavaSript para que ele possa assumir as funções do express...
+
+// 7°) Criando a variável que armazenara os albuns, que vão ser criadas, modificadas e armazenadas...
+const lorenzoAlbuns = [
   {
     id: 1,
-    capa:
-      "https://ia902802.us.archive.org/6/items/cd_antennas-to-hell_slipknot/cd_antennas-to-hell_slipknot_itemimage.png",
+    capa: "https://ia902802.us.archive.org/6/items/cd_antennas-to-hell_slipknot/cd_antennas-to-hell_slipknot_itemimage.png",
     nome: "Antennas To Hell",
     artista: "Slipknot",
     genero: "Nu metal, Heavy metal, Metal alternativo",
@@ -39,8 +37,7 @@ const listaAlbuns = [
   },
   {
     id: 2,
-    capa:
-      "https://ia800100.us.archive.org/0/items/cd_audioslave_audioslave/cd_audioslave_audioslave_itemimage.png",
+    capa: "https://ia800100.us.archive.org/0/items/cd_audioslave_audioslave/cd_audioslave_audioslave_itemimage.png",
     nome: "Audioslave",
     artista: "Audioslave",
     genero: "Hard rock, Rock alternativo",
@@ -66,8 +63,7 @@ const listaAlbuns = [
   },
   {
     id: 3,
-    capa:
-      "https://img.discogs.com/PowEgWqA4k60GpsoN-wnVOlJDbw=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14781325-1581478383-6846.jpeg.jpg",
+    capa: "https://img.discogs.com/PowEgWqA4k60GpsoN-wnVOlJDbw=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14781325-1581478383-6846.jpeg.jpg",
     nome: "Martin Garrix – The Martin Garrix Experience",
     artista: "Martin Garrix",
     genero: "Electronic, Pop",
@@ -99,6 +95,15 @@ const listaAlbuns = [
   },
 ];
 
+// 10°) CORS - Permite a troca de recursos entre origens diferentes...
+app.all("/*", (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "*");
+  next();
+});
+
+app.use(express.json()); // 3°) É dito para o express trabalhar com middleware de Jason para trabalharmos com o formato JSON...
+
 /**
  *  5°) API - Forma de comunicação entre sistemas que contem endereços (End Points)...
  *  API REST - Permite o uso GET/POST/PUT/DELETE...
@@ -110,29 +115,24 @@ app.get("/", (req, res) => {
    * REQ - (RESQUEST/REQUISIÇÃO) --- Vem do Usuário...
    * RES - (RESPONSE/RESPOSTA) ----- Volta para o Usuário...
    */
-  res.send("Olá, tudo OK!");
+  res.send("Olá, tudo ok!");
 });
 
 // 8°) [GET] /lista - retorna a lista de albuns...
 app.get("/albuns", (req, res) => {
-  res.send(listaAlbuns);
+  res.send(lorenzoAlbuns);
 });
 
 // 9°) [Get] /lista/{id} - retornando ao usuário um único album de acordo com o id...
 app.get("/albuns/:id", (req, res) => {
   const idParam = req.params.id; // Acessa o id via a requisicao...
-  const albumEncontrado = listaAlbuns.find((album) => album.id == idParam); // Busca um item de acordo com seu id, Procurando na lista um album que contenha o id igula ao que foi recebido via parametro...
+  const albumEncontrado = lorenzoAlbuns.find((album) => album.id == idParam); // Busca um item de acordo com seu id, Procurando na lista um album que contenha o id igula ao que foi recebido via parametro...
   res.send(albumEncontrado); // envia para o Front-End o album encontrado...
 });
 
-// 10°) CORS - Permite a troca de recursos entre origens diferentes...
-app.all("/*", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  next();
-});
+const port = 3000; // 4°) Definindo a porta que o Back o irá executar...
 
 app.listen(port, () => {
   // 6°) Inicializa o servidor...
-  console.log(`App está rodadando com sucesso na porta: ${port}`);
+  console.log(`App Rodadno na Porta: ${port}`);
 });
