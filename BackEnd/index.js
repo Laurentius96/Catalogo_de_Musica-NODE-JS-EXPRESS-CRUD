@@ -1,6 +1,6 @@
 /**
  * Arquivo:
- * 
+ *
  */
 
 const express = require("express"); // 1°) Importa o express para que seja possivel utilizar as suas funções na aplicação...
@@ -14,6 +14,8 @@ app.use(cors()); // 6.1°) CORS - permite a troca de recursos entre origens dife
 app.use(express.json()); // 3°) É dito para o express trabalhar com middleware de Jason para trabalharmos com o formato JSON...
 
 const albunsRouter = require("./routes/albuns.route"); // 7°) Importando o arquivo de rotas...
+
+app.use("/albuns", albunsRouter); // 11°) É dito para o Back-End usar minhas rotas para o Endpoint /albuns...
 
 const port = 3000; // 4°) Definindo a porta que o Back o irá executar...
 
