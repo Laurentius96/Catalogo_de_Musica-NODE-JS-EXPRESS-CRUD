@@ -3,18 +3,18 @@
  *
  */
 
-// 19°) Criando a variável que armazenara os albuns, que vão ser criadas, modificadas e armazenadas...
+// 18°) Criando a variável que armazenara os albuns, que vão ser criadas, modificadas e armazenadas...
 const lorenzoAlbuns = [
-    {
-      id: 1,
-      capa: "https://ia902802.us.archive.org/6/items/cd_antennas-to-hell_slipknot/cd_antennas-to-hell_slipknot_itemimage.png",
-      nome: "Antennas To Hell",
-      artista: "Slipknot",
-      genero: "Nu metal, Heavy metal, Metal alternativo",
-      duracao: "77:07",
-      ano: 2012,
-      tracklist: [
-        ` 1. (sic)
+  {
+    id: 1,
+    capa: "https://ia902802.us.archive.org/6/items/cd_antennas-to-hell_slipknot/cd_antennas-to-hell_slipknot_itemimage.png",
+    nome: "Antennas To Hell",
+    artista: "Slipknot",
+    genero: "Nu metal, Heavy metal, Metal alternativo",
+    duracao: "77:07",
+    ano: 2012,
+    tracklist: [
+      ` 1. (sic)
           2. Eyeless
           3. Wait And Bleed
           4. Spit It Out
@@ -33,19 +33,19 @@ const lorenzoAlbuns = [
           17. Psychosocial
           18. Dead Memories (Radio Mix)
           19. Snuff`,
-      ],
-      escutado: "sim",
-    },
-    {
-      id: 2,
-      capa: "https://ia800100.us.archive.org/0/items/cd_audioslave_audioslave/cd_audioslave_audioslave_itemimage.png",
-      nome: "Audioslave",
-      artista: "Audioslave",
-      genero: "Hard rock, Rock alternativo",
-      duracao: "65:26",
-      ano: 2002,
-      tracklist: [
-        ` 1. Cochise
+    ],
+    escutado: "sim",
+  },
+  {
+    id: 2,
+    capa: "https://ia800100.us.archive.org/0/items/cd_audioslave_audioslave/cd_audioslave_audioslave_itemimage.png",
+    nome: "Audioslave",
+    artista: "Audioslave",
+    genero: "Hard rock, Rock alternativo",
+    duracao: "65:26",
+    ano: 2002,
+    tracklist: [
+      ` 1. Cochise
           2. Show Me How to Live
           3. Gasoline
           4. What You Are
@@ -59,19 +59,19 @@ const lorenzoAlbuns = [
           12. Light My Way
           13. Getaway Car
           14. The Last Remaining Light`,
-      ],
-      escutado: "sim",
-    },
-    {
-      id: 3,
-      capa: "https://img.discogs.com/PowEgWqA4k60GpsoN-wnVOlJDbw=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14781325-1581478383-6846.jpeg.jpg",
-      nome: "Martin Garrix – The Martin Garrix Experience",
-      artista: "Martin Garrix",
-      genero: "Electronic, Pop",
-      duracao: "71:00",
-      ano: 2019,
-      tracklist: [
-        ` 1. Summer Days	
+    ],
+    escutado: "sim",
+  },
+  {
+    id: 3,
+    capa: "https://img.discogs.com/PowEgWqA4k60GpsoN-wnVOlJDbw=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-14781325-1581478383-6846.jpeg.jpg",
+    nome: "Martin Garrix – The Martin Garrix Experience",
+    artista: "Martin Garrix",
+    genero: "Electronic, Pop",
+    duracao: "71:00",
+    ano: 2019,
+    tracklist: [
+      ` 1. Summer Days	
           2. No Sleep	
           3. High On Life	
           4. In The Name Of Love	
@@ -91,7 +91,33 @@ const lorenzoAlbuns = [
           18.	Game Over	
           19.	Yottabyte	
           20.	Glitch`,
-      ],
-      escutado: "sim",
-    },
-  ];
+    ],
+    escutado: "sim",
+  },
+];
+
+// 19°) Versão reduzida pois só possui um retorno...
+const getAlbunsService = () => lorenzoAlbuns;
+
+// 20°) Versão reduzida pois só possui um retorno...
+const getVagasByIdService = (idParam) => {
+  return lorenzoAlbuns.find((album) => album.id == idParam);
+};
+
+// 23°) Cadastra uma nova vaga(objeto) na lista lorenzoAlbuns...
+const addAlbum = (newAlbum) => {
+    // Aqui um id falso é criado para a nova vaga...
+    const newId = lorenzoAlbuns.length + 1;
+    newAlbum.id = newId;
+    console.log(newAlbum);
+    // Add esse novo album no array (lorenzoAlbuns)
+    lorenzoAlbuns.push(newVaga);
+    return newAlbum;
+}
+
+// 21°) Exportando as funções para serem usadas nas rotas...
+module.exports = {
+  getAlbunsService,
+  getVagasByIdService,
+  addAlbum,
+};

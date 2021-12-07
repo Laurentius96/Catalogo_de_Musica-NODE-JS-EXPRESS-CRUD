@@ -2,9 +2,11 @@
  * Arquivo: Local onde vai ficar as guardadas as funções que vão ser chamadas pelo route.js, esse arquivo é responsável pelas respostas das requisições e o tratamento básico dos dados.
  */
 
+const albunsService = require("../services/albuns.service"); // 22°) Importando o service para poder ter acesso as funções que cuidam dos dados...
+
 // 12°) Retorna uma lista de albuns pre cadastradas para o Front-End...
 const getAlbuns = (req, res) => {
-  const albuns = albunsService();
+  const albuns = albunsService.getAlbunsService();
   res.send(albuns);
 };
 
@@ -15,7 +17,7 @@ const getAlbunsById = (req, res) => {
    * RES - (RESPONSE/RESPOSTA) ---> Volta para do Back-End para o  Usuário (Front-End)...
    */
   const id = req.params.id;
-  const album = albunsService.getAlbunsById(id);
+  const album = albunsService.getAlbunsByIdService(id);
   res.send(album);
 };
 
