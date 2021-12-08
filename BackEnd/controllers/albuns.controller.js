@@ -26,13 +26,13 @@ const postAlbum = (req, res) => {
   // É pego o objeto da requisição para ser cadastrado...
   const album = req.body;
   // É enviado o album que recebeu via corpo de requisição para o serviço adicionado na lista...
-  const newAlbum = vagasService.addAlbum(album);
+  const newAlbum = albunsService.addAlbum(album);
   res.send({
     message: `O álbum ${newAlbum.name} do(a) artista/banda ${newAlbum.artista} foi adicionada ao catálogo!`,
   });
 };
 
-// 26°) Vai receber um objeto(body) e um ID(param) para poder atualizar a vaga com o objeto de acordo com seu ID...
+// 26°) Vai receber um objeto(body) e um ID(param) para poder atualizar o álbum com o objeto de acordo com seu ID...
 const putAlbum = (req, res) => {
   // Pega o parametro via requisição..
   const idParam = req.params.id;
@@ -48,10 +48,19 @@ const putAlbum = (req, res) => {
   }
 };
 
+// 30°) Vai excluir um item da lista e devolver a msg de excluido para o Front-End
+const deleteAlbum = (req, res) => {
+  const albumExcluido = albunsService.deleteAlbum(req.params.id);
+  res.send(
+    `O álbum ${albumExcluido.nome}. do(a) artista/banda ${albumExcluido.artista} foi removido do catálogo! `
+  );
+};
+
 // 14°) Exportan as funções para serem usadas nas rotas...
 module.exports = {
   getAlbuns,
   getAlbunsById,
   postAlbum,
   putAlbum,
+  deleteAlbum,
 };

@@ -100,24 +100,60 @@ const lorenzoAlbuns = [
 const getAlbunsService = () => lorenzoAlbuns;
 
 // 20°) Versão reduzida pois só possui um retorno...
-const getVagasByIdService = (idParam) => {
+const getAlbunsByIdService = (idParam) => {
   return lorenzoAlbuns.find((album) => album.id == idParam);
 };
 
-// 23°) Cadastra uma nova vaga(objeto) na lista lorenzoAlbuns...
+// 23°) Cadastra uma novo álbum(objeto) na lista lorenzoAlbuns...
 const addAlbum = (newAlbum) => {
-    // Aqui um id falso é criado para a nova vaga...
-    const newId = lorenzoAlbuns.length + 1;
-    newAlbum.id = newId;
-    console.log(newAlbum);
-    // Add esse novo album no array (lorenzoAlbuns)
-    lorenzoAlbuns.push(newVaga);
-    return newAlbum;
-}
+  // Aqui um id falso é criado para o novo álbum...
+  const newId = lorenzoAlbuns.length + 1;
+  newAlbum.id = newId;
+  console.log(newAlbum);
+  // Add esse novo album no array (lorenzoAlbuns)
+  lorenzoAlbuns.push(newVaga);
+  return newAlbum;
+};
+
+// 27°) Procura um objeto de acordo com o ID e troca os seus valores...
+const putAlbum = (idParam, albumEdit) => {
+  // Busca o index do álbum que ele acha com ID que está sendo procurado...
+  const index = lorenzoAlbuns.findIndex((album) => album.id == idParam);
+  // Verifico se realmente encontrou um index valido na lista...
+  if (index >= 0) {
+    /**
+     * SPRED OPERATOR:
+     * Faz um espelho do álbum na lista e um espelho do álbum editada e junto as duas trocando apenas o que é necessario...
+     *
+     */
+    lorenzoAlbuns[index] = {
+      ...lorenzoAlbuns[index],
+      ...albumEdit,
+    };
+    // Retorna um boleano true para o controller podet saber que a edição foi feita com sucesso...
+    return true;
+  } else {
+    console.log("Não existe album com o ID digitado");
+    // Retornamos um boleano false para o controller podet saber que a edição teve um erro...
+    return false;
+  }
+};
+
+// 29°)
+const deleteAlbum = (idParam) => {
+  const index = lorenzoAlbuns.findIndex((album) => album.id == idParam);
+  // startnumber = qual a posição que deve ser iniciada a exclusao
+  // deleCount = quantidade de items para ser excluido
+  const albumExcluido = lorenzoAlbuns[index];
+  lorenzoAlbuns.splice(index, 1);
+  return albumExcluido;
+};
 
 // 21°) Exportando as funções para serem usadas nas rotas...
 module.exports = {
   getAlbunsService,
-  getVagasByIdService,
+  getAlbunsByIdService,
   addAlbum,
+  putAlbum,
+  deleteAlbum,
 };
