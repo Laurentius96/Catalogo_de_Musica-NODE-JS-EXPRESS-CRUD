@@ -19,12 +19,12 @@ const getAlbuns = async () => {
       "beforeend",
       `
         <tr>
-            <td>${album.capa}</td>
+            <th scope="row">${album.id}</th>
             <td>${album.nome}</td>
             <td>${album.artista}</td>
             <td>${album.genero}</td>
             <td>${album.duracao}</td>
-            <td>${album.ano}</td>
+            <td>${album.ano}</td>            
          </tr>
 
         `
@@ -47,12 +47,12 @@ const escolherAlbum = async () => {
     "beforeend",
     `
     <tr>
-            <td>${album.capa}</td>
-            <td>${album.nome}</td>
-            <td>${album.artista}</td>
-            <td>${album.genero}</td>
-            <td>${album.duracao}</td>
-            <td>${album.ano}</td>
+        <th scope="row">${album.id}</th>
+        <td>${album.nome}</td>
+        <td>${album.artista}</td>
+        <td>${album.genero}</td>
+        <td>${album.duracao}</td>
+        <td>${album.ano}</td>
      </tr>
 
     `
