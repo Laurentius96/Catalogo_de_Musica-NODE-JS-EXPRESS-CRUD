@@ -1,3 +1,25 @@
-#textoNav, #tabela, #t1, #botao{
+#textoNav,
+#tabela,
+#t1,
+#botao2 {
     color: #198754;
+}
+
+#botao1 {
+    color: black;
+    font-size: 15px;
+}
+
+label {
+    font-size: 12px;
+    color: #198754;
+}
+
+#titulo {
+    margin-top: 50px;
+}
+
+#subtitulo {
+
+    margin-bottom: 25px;
 }

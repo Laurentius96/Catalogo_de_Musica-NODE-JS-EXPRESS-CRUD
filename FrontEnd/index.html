@@ -12,7 +12,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./style.css" />
-    <title>Albuns de Música</title>
+    <title>Álbuns de Música</title>
   </head>
   <body>
     <header>
@@ -25,58 +25,100 @@
       </nav>
     </header>
     <main class="container">
-      <div class="row">
-        <div class="col-12 mt-5">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-10">
-                <div class="form-floating mb-3">
-                  <input
-                    type="number"
-                    class="form-control"
-                    id="idAlbum"
-                    placeholder="name@example.com"
-                  />
-                  <label for="idAlbum"
-                    >Ache seu álbum através do identificador (#):</label
-                  >
-                </div>
-              </div>
-              <div class="col-2">
-                <button
-                  onclick="escolherAlbum()"
-                  class="btn btn-dark h-75 w-100"
-                  id="botao"
-                >
-                  Escolher
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <h2 style="text-align: center">Álbum Escolhido</h2>
-          <table class="table table-dark table-hover" id="t1">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <!-- <th scope="col">Capa</th> -->
-                <th scope="col">Álbum</th>
-                <th scope="col">Artista</th>
-                <th scope="col">Gênero</th>
-                <th scope="col">Duração</th>
-                <th scope="col">Ano</th>
-                <!-- <th scope="col">Músicas</th> -->
-              </tr>
-            </thead>
-            <tbody id="album"></tbody>
-          </table>
-        </div>
-      </div>
       <div>
-        <h2 style="text-align: center">Lista de Álbuns</h2>
+        <h2 style="text-align: center" id="titulo">Lista de Álbuns</h2>
+        <h6 style="text-align: center" id="subtitulo">
+          (Fique à vontade para adicinar, editar ou deletar algum álbum)
+        </h6>
         <table id="lista"></table>
       </div>
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="albumCadastro"
+                  placeholder="albumCadastro"
+                />
+                <label for="floatingInput">Álbum:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="artista"
+                  placeholder="artista"
+                />
+                <label for="floatingInput">Artista:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="genero"
+                  placeholder="genero"
+                />
+                <label for="floatingInput">Gênero:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="duracao"
+                  placeholder="duracao"
+                />
+                <label for="floatingInput">Duração:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="ano"
+                  placeholder="name@example.com"
+                />
+                <label for="floatingInput">Ano:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="capa"
+                  placeholder="capa"
+                />
+                <label for="floatingInput">Capa:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tracklist"
+                  placeholder="tracklist"
+                />
+                <label for="floatingInput">Músicas:</label>
+              </div>
+            </th>
+            <th scope="col">
+              <button class="mb-4 btn btn-success btn-lg" onclick="submitForm()" id="botao1">Enviar</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id=""></tbody>
+      </table>
       <table class="table table-dark table-hover" id="t1">
         <thead>
           <tr>
@@ -92,6 +134,49 @@
         </thead>
         <tbody id="tabela"></tbody>
       </table>
+      <div class="row">
+        <div class="col-12 mt-5">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-10">
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="idAlbum" />
+                  <label for="idAlbum"
+                    >Ache seu álbum através do identificador (#):</label
+                  >
+                </div>
+              </div>
+              <div class="col-2">
+                <button
+                  onclick="escolherAlbum()"
+                  class="btn btn-dark h-75 w-100"
+                  id="botao2"
+                >
+                  Escolher
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <h2 style="text-align: center">Álbuns Escolhidos</h2>
+          <table class="table table-dark table-hover" id="t1">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Capa</th>
+                <th scope="col">Álbum</th>
+                <th scope="col">Artista</th>
+                <!-- <th scope="col">Gênero</th> -->
+                <!-- <th scope="col">Duração</th> -->
+                <!-- <th scope="col">Ano</th> -->
+                <th scope="col">Músicas</th>
+              </tr>
+            </thead>
+            <tbody id="album"></tbody>
+          </table>
+        </div>
+      </div>
     </main>
     <script src="scripts.js"></script>
     <script

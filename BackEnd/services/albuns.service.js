@@ -34,7 +34,6 @@ const lorenzoAlbuns = [
           18. Dead Memories (Radio Mix)
           19. Snuff`,
     ],
-    escutado: "sim",
   },
   {
     id: 2,
@@ -60,7 +59,6 @@ const lorenzoAlbuns = [
           13. Getaway Car
           14. The Last Remaining Light`,
     ],
-    escutado: "sim",
   },
   {
     id: 3,
@@ -92,7 +90,6 @@ const lorenzoAlbuns = [
           19.	Yottabyte	
           20.	Glitch`,
     ],
-    escutado: "sim",
   },
 ];
 

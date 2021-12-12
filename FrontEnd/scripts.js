@@ -58,3 +58,6 @@ const escolherAlbum = async () => {
     `
   );
 };
+
+
+// 32° )
