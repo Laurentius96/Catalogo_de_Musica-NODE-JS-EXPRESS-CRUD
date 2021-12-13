@@ -51,9 +51,16 @@ const putAlbum = (req, res) => {
 
 // 30°) Vai excluir um item da lista e devolver a msg de excluido para o Front-End
 const deleteAlbum = (req, res) => {
+  const id = req.params.id;
   const albumExcluido = albunsService.deleteAlbum(req.params.id);
+
+  if (!albumExcluido) {
+    res
+      .status(404)
+      .send({ message: "Não foi possivel excluir, o id não foi encontrado" });
+  }
   res.send(
-    `O álbum ${albumExcluido.nome}. do(a) artista/banda ${albumExcluido.artista} foi removido do catálogo! `
+    `O álbum ${albumExcluido.nome} do(a) artista/banda ${albumExcluido.artista} foi removido do catálogo! `
   );
 };
 
