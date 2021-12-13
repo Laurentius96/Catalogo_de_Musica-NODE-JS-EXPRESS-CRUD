@@ -59,46 +59,50 @@ const escolherAlbum = async () => {
 };
 
 // 32°) [POST] - Mapeia os dados do Front-End para o Back-End...
-const submitForm = async () => {
+const postAlbum = async () => {
+  // Mapear os inputs com os dados que o usuário digitou
   const nome = document.getElementById("nome").value;
+  const capa = document.getElementById("capa").value;
   const artista = document.getElementById("artista").value;
   const genero = document.getElementById("genero").value;
   const duracao = document.getElementById("duracao").value;
   const ano = document.getElementById("ano").value;
-  const capa = document.getElementById("capa").value;
   const tracklist = document.getElementById("tracklist").value;
+  console.log(nome, capa, artista, genero, duracao, ano, tracklist);
 
   const album = {
-    nome,
-    artista,
-    genero,
-    duracao,
-    ano,
-    capa,
-    tracklist,
+    nome: nome,
+    capa: capa,
+    artista: artista,
+    genero: genero,
+    duracao: duracao,
+    ano: ano,
+    tracklist: tracklist,
   };
+  console.log(album);
 
-  // Faz a chamada para a API com algumas configurações...
+  // Chama a API com determindas configurações...
   const response = await fetch(`${apiURL}/albuns/add`, {
     method: "POST",
     headers: {
-      "Contend-Type": "application/jason",
+      "Content-Type": "application/json",
     },
-    // JSON Stringfy = transforma um objeto/array js em um JSON string
+    //JSON Stringfy -> transforma um objeto/array js em um JSON string...
     body: JSON.stringify(album),
   });
   const data = await response.json();
   alert(data.message);
-
+  tabela.innerHTML = "";
+  getAlbuns();
   limpaCampos();
 };
 
 const limpaCampos = () => {
-  document.getElementById("nome").value = " ";
-  document.getElementById("artista").value = " ";
-  document.getElementById("genero").value = " ";
-  document.getElementById("duracao").value = " ";
-  document.getElementById("ano").value = " ";
-  document.getElementById("capa").value = " ";
-  document.getElementById("tracklist").value = " ";
+  document.getElementById("nome").value = "";
+  document.getElementById("capa").value = "";
+  document.getElementById("artista").value = "";
+  document.getElementById("genero").value = "";
+  document.getElementById("duracao").value = "";
+  document.getElementById("ano").value = "";
+  document.getElementById("tracklist").value = "";
 };

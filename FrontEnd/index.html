@@ -93,7 +93,7 @@
             <th scope="col">
               <div class="form-floating mb-3">
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
                   id="ano"
                   placeholder="ano"
@@ -115,7 +115,7 @@
             <th scope="col">
               <button
                 class="mb-4 btn btn-success btn-lg"
-                onclick="submitForm()"
+                onclick="postAlbum()"
                 id="botao1"
               >
                 Enviar
@@ -142,6 +142,10 @@
       </table>
       <div class="row">
         <div class="col-12 mt-5">
+          <h2 style="text-align: center">Músicas e Capa do Álbum</h2>
+          <h6 style="text-align: center" id="subtitulo2">
+            (Veja às músicas e a capa do álbum que mais te chamou atenção)
+          </h6>
           <div class="form-group">
             <div class="row">
               <div class="col-10">
@@ -165,10 +169,6 @@
           </div>
         </div>
         <div class="col-12">
-          <h2 style="text-align: center">Músicas e Capa do Álbum</h2>
-          <h6 style="text-align: center" id="subtitulo2">
-            (Veja às músicas e a capa do álbum que mais te chamou atenção)
-          </h6>
           <table class="table table-dark table-hover" id="t1">
             <thead>
               <tr>

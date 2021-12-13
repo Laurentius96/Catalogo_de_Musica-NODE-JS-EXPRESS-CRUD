@@ -29,7 +29,7 @@ const postAlbum = (req, res) => {
   // É enviado o album que recebeu via corpo de requisição para o serviço adicionado na lista...
   const newAlbum = albunsService.addAlbum(album);
   res.send({
-    message: `O álbum ${newAlbum.name} do(a) artista/banda ${newAlbum.artista} foi adicionada ao catálogo!`,
+    message: `O álbum ${newAlbum.nome} do(a) artista/banda ${newAlbum.artista} foi adicionada ao catálogo!`,
   });
 };
 
