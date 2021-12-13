@@ -60,7 +60,7 @@ const escolherAlbum = async () => {
 
 // 32°) [POST] - Mapeia os dados do Front-End para o Back-End...
 const submitForm = async () => {
-  const nome = document.getElementById("albumCadastro").value;
+  const nome = document.getElementById("nome").value;
   const artista = document.getElementById("artista").value;
   const genero = document.getElementById("genero").value;
   const duracao = document.getElementById("duracao").value;
@@ -89,12 +89,12 @@ const submitForm = async () => {
   });
   const data = await response.json();
   alert(data.message);
-  
+
   limpaCampos();
 };
 
 const limpaCampos = () => {
-  document.getElementById("albumCadastro").value = " ";
+  document.getElementById("nome").value = " ";
   document.getElementById("artista").value = " ";
   document.getElementById("genero").value = " ";
   document.getElementById("duracao").value = " ";

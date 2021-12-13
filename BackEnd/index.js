@@ -1,5 +1,5 @@
 /**
- * Arquivo:
+ * Arquivo: Permite o uso do cors criação da porta  uso do json
  *
  */
 

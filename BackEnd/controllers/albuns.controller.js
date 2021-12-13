@@ -25,6 +25,7 @@ const getAlbunsById = (req, res) => {
 const postAlbum = (req, res) => {
   // É pego o objeto da requisição para ser cadastrado...
   const album = req.body;
+  console.log(req.body);
   // É enviado o album que recebeu via corpo de requisição para o serviço adicionado na lista...
   const newAlbum = albunsService.addAlbum(album);
   res.send({
