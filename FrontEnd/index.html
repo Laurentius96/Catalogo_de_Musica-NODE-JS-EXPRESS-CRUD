@@ -85,7 +85,7 @@
                   type="text"
                   class="form-control"
                   id="ano"
-                  placeholder="name@example.com"
+                  placeholder="ano"
                 />
                 <label for="floatingInput">Ano:</label>
               </div>
@@ -113,7 +113,13 @@
               </div>
             </th>
             <th scope="col">
-              <button class="mb-4 btn btn-success btn-lg" onclick="submitForm()" id="botao1">Enviar</button>
+              <button
+                class="mb-4 btn btn-success btn-lg"
+                onclick="submitForm()"
+                id="botao1"
+              >
+                Enviar
+              </button>
             </th>
           </tr>
         </thead>
@@ -159,14 +165,17 @@
           </div>
         </div>
         <div class="col-12">
-          <h2 style="text-align: center">Álbuns Escolhidos</h2>
+          <h2 style="text-align: center">Músicas e Capa do Álbum</h2>
+          <h6 style="text-align: center" id="subtitulo2">
+            (Veja às músicas e a capa do álbum que mais te chamou atenção)
+          </h6>
           <table class="table table-dark table-hover" id="t1">
             <thead>
               <tr>
-                <!-- <th scope="col">#</th> -->
+                <th scope="col">#</th>
                 <th scope="col">Capa</th>
                 <th scope="col">Álbum</th>
-                <th scope="col">Artista</th>
+                <!-- <th scope="col">Artista</th> -->
                 <!-- <th scope="col">Gênero</th> -->
                 <!-- <th scope="col">Duração</th> -->
                 <!-- <th scope="col">Ano</th> -->

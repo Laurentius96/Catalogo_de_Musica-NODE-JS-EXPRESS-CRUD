@@ -108,7 +108,7 @@ const addAlbum = (newAlbum) => {
   newAlbum.id = newId;
   console.log(newAlbum);
   // Add esse novo album no array (lorenzoAlbuns)
-  lorenzoAlbuns.push(newVaga);
+  lorenzoAlbuns.push(newAlbum);
   return newAlbum;
 };
 

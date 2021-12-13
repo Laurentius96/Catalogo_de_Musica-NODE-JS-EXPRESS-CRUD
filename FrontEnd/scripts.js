@@ -38,26 +38,67 @@ getAlbuns();
 const escolherAlbum = async () => {
   // Buscando o que o usuario digitou no input...
   const idDigitado = document.getElementById("idAlbum").value;
-  // Fazendo a chamdada para a api /vagas/{id} para pegar a vaga individual...
+  // Fazendo a chamdada para a api /albuns/{id} para a capa nome lista de músicas individual...
   const response = await fetch(`${apiURL}/albuns/${idDigitado}`);
   // Salvo o objeto retornado pelo backend...
   const album = await response.json();
-  // Mapeando a tabela do html e inserindo uma vaga dentro...
+  // Mapeando a tabela do html e inserindo um album dentro...
   document.getElementById("album").insertAdjacentHTML(
     "beforeend",
     `
     <tr>
         <th scope="row">${album.id}</th>
+        <td> <img src="${album.capa}"></th>
         <td>${album.nome}</td>
-        <td>${album.artista}</td>
-        <td>${album.genero}</td>
-        <td>${album.duracao}</td>
-        <td>${album.ano}</td>
+        <td>${album.tracklist}</td>
+
      </tr>
 
     `
   );
 };
 
+// 32°) [POST] - Mapeia os dados do Front-End para o Back-End...
+const submitForm = async () => {
+  const nome = document.getElementById("albumCadastro").value;
+  const artista = document.getElementById("artista").value;
+  const genero = document.getElementById("genero").value;
+  const duracao = document.getElementById("duracao").value;
+  const ano = document.getElementById("ano").value;
+  const capa = document.getElementById("capa").value;
+  const tracklist = document.getElementById("tracklist").value;
 
-// 32° )
+  const album = {
+    nome,
+    artista,
+    genero,
+    duracao,
+    ano,
+    capa,
+    tracklist,
+  };
+
+  // Faz a chamada para a API com algumas configurações...
+  const response = await fetch(`${apiURL}/albuns/add`, {
+    method: "POST",
+    headers: {
+      "Contend-Type": "application/jason",
+    },
+    // JSON Stringfy = transforma um objeto/array js em um JSON string
+    body: JSON.stringify(album),
+  });
+  const data = await response.json();
+  alert(data.message);
+  
+  limpaCampos();
+};
+
+const limpaCampos = () => {
+  document.getElementById("albumCadastro").value = " ";
+  document.getElementById("artista").value = " ";
+  document.getElementById("genero").value = " ";
+  document.getElementById("duracao").value = " ";
+  document.getElementById("ano").value = " ";
+  document.getElementById("capa").value = " ";
+  document.getElementById("tracklist").value = " ";
+};
