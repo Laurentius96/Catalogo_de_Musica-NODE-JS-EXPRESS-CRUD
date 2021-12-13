@@ -163,15 +163,12 @@ const getById = async (id) => {
   return album;
 };
 
-// 37°) [DELETE] http://localhost:3000/albuns/delete/id Recebo um id e exclue o album do Banck-End...
+// 37°) [DELETE] http://localhost:3000/albuns/delete/id Recebe um ID e exclue o álbum do Banck-End...
 const deleteAlbum = async (id) => {
   const response = await fetch(`${apiURL}/albuns/delete/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // JSON Stringfy -> transforma um objeto/array js em um JSON string...
-    body: JSON.stringify(album),
+   
+ 
   });
   const data = await response.json();
   alert(data.message);

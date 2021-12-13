@@ -59,9 +59,9 @@ const deleteAlbum = (req, res) => {
       .status(404)
       .send({ message: "Não foi possivel excluir, o id não foi encontrado" });
   }
-  res.send(
-    `O álbum ${albumExcluido.nome} do(a) artista/banda ${albumExcluido.artista} foi removido do catálogo! `
-  );
+  res.send({
+    message: `O álbum ${albumExcluido.nome} do(a) artista/banda ${albumExcluido.artista} foi removido do catálogo! `,
+  });
 };
 
 // 14°) Exportan as funções para serem usadas nas rotas...
