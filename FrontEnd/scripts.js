@@ -167,8 +167,6 @@ const getById = async (id) => {
 const deleteAlbum = async (id) => {
   const response = await fetch(`${apiURL}/albuns/delete/${id}`, {
     method: "DELETE",
-   
- 
   });
   const data = await response.json();
   alert(data.message);
