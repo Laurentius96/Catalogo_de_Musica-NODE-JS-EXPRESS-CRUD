@@ -20,6 +20,7 @@ const getAlbuns = async () => {
   const response = await fetch(`${apiURL}/albuns`);
   const albuns = await response.json();
 
+  // Map - faz a interação da lista e para cada objeto ele podera fazer alguma coissa. 
   albuns.map((album) => {
     tabela.insertAdjacentHTML(
       "beforeend",

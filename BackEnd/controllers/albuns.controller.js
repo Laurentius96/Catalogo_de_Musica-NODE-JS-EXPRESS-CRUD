@@ -23,29 +23,67 @@ const getAlbunsById = (req, res) => {
 
 // 24°) Irá cadastrar um novo album de acordo com o objeto vindo do Font-End...
 const postAlbum = (req, res) => {
-  // É pego o objeto da requisição para ser cadastrado...
-  const album = req.body;
-  console.log(req.body);
-  // É enviado o album que recebeu via corpo de requisição para o serviço adicionado na lista...
-  const newAlbum = albunsService.addAlbum(album);
-  res.send({
-    message: `O álbum ${newAlbum.nome} do(a) artista/banda ${newAlbum.artista} foi adicionada ao catálogo!`,
-  });
+  // Validar os dados de cadastro...
+  if (
+    !req.body ||
+    !req.body.nome ||
+    !req.body.capa ||
+    !req.body.artista ||
+    !req.body.genero ||
+    !req.body.duracao ||
+    !req.body.ano
+  ) {
+    res.status(400).send({
+      message:
+        "Tirando o campo de cadastro de música, por favor preencher obrigatorimante os demais campos!",
+    });
+    return;
+  } else {
+    // É pego o objeto da requisição para ser cadastrado...
+    const album = req.body;
+    console.log(req.body);
+    // É enviado o album que recebeu via corpo de requisição para o serviço adicionado na lista...
+    const newAlbum = albunsService.addAlbum(album);
+    if (!newAlbum.id) {
+      res.status(500).send({
+        message: `Erro ao salvar a vaga, por favor tentar novamente!`,
+      });
+    }
+    res.send({
+      message: `O álbum ${newAlbum.nome} do(a) artista/banda ${newAlbum.artista} foi adicionada ao catálogo!`,
+    });
+  }
 };
 
 // 26°) Vai receber um objeto(body) e um ID(param) para poder atualizar o álbum com o objeto de acordo com seu ID...
 const putAlbum = (req, res) => {
-  // Pega o parametro via requisição..
-  const idParam = req.params.id;
-  // Pega o objeto recebido via requisição...
-  const albumEdit = req.body;
-  const edicao = albunsService.putAlbum(idParam, albumEdit);
-  if (edicao) {
-    res.send({ message: `O álbum foi editado com sucesso!` });
+  if (
+    !req.body ||
+    !req.body.nome ||
+    !req.body.capa ||
+    !req.body.artista ||
+    !req.body.genero ||
+    !req.body.duracao ||
+    !req.body.ano
+  ) {
+    res.status(400).send({
+      message:
+        "Tirando o campo de cadastro de música, por favor preencher obrigatorimante os demais campos!",
+    });
+    return;
   } else {
-    res
-      .status(404)
-      .send({ message: `Não foi encontrado o álbum com o ID digitado!` });
+    // Pega o parametro via requisição..
+    const idParam = req.params.id;
+    // Pega o objeto recebido via requisição...
+    const albumEdit = req.body;
+    const edicao = albunsService.putAlbum(idParam, albumEdit);
+    if (edicao) {
+      res.send({ message: `O álbum foi editado com sucesso!` });
+    } else {
+      res
+        .status(404)
+        .send({ message: `Não foi encontrado o álbum com o ID digitado!` });
+    }
   }
 };
 
