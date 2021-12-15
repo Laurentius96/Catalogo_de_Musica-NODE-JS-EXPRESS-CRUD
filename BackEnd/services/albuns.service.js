@@ -1,5 +1,5 @@
 /**
- * Arquivo: Responsável pelo tratamento das informações, lidando com regras de negócio e contato com o banco de dados ( no nosso caso um array de objetos) .
+ * Arquivo: Responsável pelo tratamento das informações, lidando com regras de negócio e contato com o banco de dados (no nosso caso um array de objetos).
  *
  */
 
@@ -34,6 +34,7 @@ const lorenzoAlbuns = [
           18. Dead Memories (Radio Mix)
           19. Snuff`,
     ],
+    escutado: false,
   },
   {
     id: 2,
@@ -59,6 +60,7 @@ const lorenzoAlbuns = [
           13. Getaway Car
           14. The Last Remaining Light`,
     ],
+    escutado: false,
   },
   {
     id: 3,
@@ -90,6 +92,7 @@ const lorenzoAlbuns = [
           19.	Yottabyte	
           20.	Glitch`,
     ],
+    escutado: false,
   },
 ];
 

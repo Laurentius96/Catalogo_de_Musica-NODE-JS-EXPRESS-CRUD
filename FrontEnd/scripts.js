@@ -20,7 +20,7 @@ const getAlbuns = async () => {
   const response = await fetch(`${apiURL}/albuns`);
   const albuns = await response.json();
 
-  // Map - faz a interação da lista e para cada objeto ele podera fazer alguma coissa. 
+  // Map - faz a interação da lista e para cada objeto ele podera fazer alguma coissa.
   albuns.map((album) => {
     tabela.insertAdjacentHTML(
       "beforeend",
@@ -33,12 +33,22 @@ const getAlbuns = async () => {
             <td>${album.duracao}</td>
             <td>${album.ano}</td>
             <td>
-            <td>
-              <button class="btn btn-secondary" onclick="editaAlbum(${album.id})">Editar</button>
-              <button class="btn btn-warning" onclick="deleteAlbum(${album.id})">Deletar</button>        
-            </td>            
-         </tr>
+              <input class="check" type="checkbox" onclick="marcar(${album.id})" ${album.escutado ? 'checked': '' } />
 
+              <scope"row">${album.escutado ? "Sim" : "Não"}
+            </td>
+
+            <td>
+              <button class="btn btn-secondary" onclick="editaAlbum(${
+                album.id
+              })">Editar</button>      
+            </td>
+            <td>
+              <button class="btn btn-warning" onclick="deleteAlbum(${
+                album.id
+              })">Deletar</button>        
+            </td>
+          </tr>
         `
     );
   });
@@ -186,4 +196,27 @@ const limpaCampos = () => {
   document.getElementById("duracao").value = "";
   document.getElementById("ano").value = "";
   document.getElementById("tracklist").value = "";
+};
+
+// 38°) Botão de validação se escutou ou não o album...
+const marcar = async (id) => {
+  const album = await getById(id);
+
+  if (album.escutado == false) {
+    album.escutado = true;
+  } else {
+    album.escutado = false;
+  }
+
+  const response = await fetch(`${apiURL}/albuns/edit/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // JSON Stringfy -> transforma um objeto/array js em um JSON string...
+    body: JSON.stringify(album),
+  });
+
+  tabela.innerHTML = "";
+  getAlbuns();
 };
